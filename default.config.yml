@@ -1,21 +1,47 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: true
-configure_terminal: true
+configure_dotfiles: false
+configure_terminal: false
 configure_osx: true
 
 # Set to 'true' to configure the Dock via dockutil.
-configure_dock: false
-dockitems_remove: []
-# - Launchpad
-# - TV
-# - Podcasts
-# - 'App Store'
-dockitems_persist: []
-# - name: "Sublime Text"
-#   path: "/Applications/Sublime Text.app/"
-#   pos: 5
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - TV
+  - Podcasts
+  - 'App Store'
+  - Terminal
+
+dockitems_persist:
+  - name: "Firefox"
+    path: "/Applications/Firefox.app"
+    pos: 1
+  - name: "Tabby"
+    path: "/Applications/Tabby.app/"
+    pos: 2
+  - name: "Boop"
+    path: "/Applications/Boop.app/"
+    pos: 3
+  - name: "Visual Studio Code"
+    path: "/Applications/Visual Studio Code.app"
+    pos: 4
+  - name: "Mail"
+    path: "/System/Applications/Mail.app"
+    pos: 5
+  - name: "Kalender"
+    path: "/System/Applications/Calendar.app"
+    pos: 6
+  - name: "KeePassXC"
+    path: "/Applications/KeePassXC.app"
+    pos: 7
+  - name: "Nextcloud"
+    path: "/Users/philipp/Nextcloud"
+    pos: 8
+  - name: "Downloads"
+    path: "/Users/philipp/Downloads"
+    pos: 9
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -26,42 +52,39 @@ sudoers_custom_config: ''
 
 dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_repo_local_destination: ~/github/dotfiles
 dotfiles_files:
-  - .zshrc
-  - .gitignore
-  - .inputrc
   - .osx
-  - .vimrc
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
+  - python@3.9
+  - cairo
+  - cowsay
   - git
-  - github/gh/gh
-  - go
-  - gpg
+  - gobuster
+  - htop
   - httpie
-  - iperf
-  - libevent
-  - sqlite
-  - mcrypt
+  - ipcalc
+  - iperf3
+  - jq
+  - libgit2
+  - libpq
+  - mas
+  - nghttp2
   - nmap
   - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - cowsay
-  - readline
-  - openssl
-  - pv
+  - pandoc
+  - pwgen
+  - r
+  - speedtest-cli
+  - telnet
+  - tldr
+  - tree
+  - wakeonlan
+  - watch
   - wget
-  - wrk
-  - zsh-history-substring-search
+  - zabbix-cli
+  - zeromq
 
 homebrew_taps:
   - homebrew/core
@@ -70,20 +93,24 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - chromedriver
-  - docker
-  - dropbox
-  - firefox
   - google-chrome
-  - handbrake
-  - licecap
-  - sequel-ace
+  - docker
+  - firefox
   - slack
-  - sublime-text
-  - transmit
-  - vagrant
+  - keepassxc
+  - tabby
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
+mas_installed_apps:
+  - { id: 1037126344, name: "Apple Configurator 2" }
+  - { id: 562184107, name: "LanScan Pro" }
+  - { id: 784801555, name: "Microsoft OneNote" }
+  - { id: 1295203466, name: "Microsoft Remote Desktop" }
+  - { id: 409203825, name: "Numbers" }
+  - { id: 409201541, name: "Pages" }
+  - { id: 409907375, name: "Remote Desktop" }
+  - { id: 425424353, name: "The Unarchiver" }
+
 mas_email: ""
 mas_password: ""
 
@@ -111,21 +138,6 @@ pip_packages: []
 
 # Set to 'true' to configure Sublime Text.
 configure_sublime: false
-sublime_base_path: '~/Library/Application Support/Sublime Text'
-sublime_config_path: "Packages/User"
-sublime_package_control:
-  - "DocBlockr"
-  - "Dockerfile Syntax Highlighting"
-  - "FileDiffs"
-  - "GitHub Flavored Markdown Preview"
-  - "Jinja2"
-  - "Package Control"
-  - "PHP-Twig"
-  - "Pretty JSON"
-  - "SublimeLinter"
-  - "SublimeLinter-contrib-yamllint"
-  - "TrailingSpaces"
-  - "WordCount"
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
