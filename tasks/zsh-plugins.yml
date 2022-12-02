@@ -1,0 +1,6 @@
+---
+- name: Download zsh-autosuggestions from GitHub
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "/Users/philipp/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    update: true
