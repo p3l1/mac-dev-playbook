@@ -18,15 +18,16 @@ dockitems_remove:
   - Terminal
   - Numbers
   - Keynote
-  - Music
+  - Musik
   - Pages
-  - Maps
-  - Photos
+  - Karten
+  - Fotos
   - FaceTime
-  - Notes
-  - Reminders
-  - Contatcs
-  - Messages
+  - Notizen
+  - Erinnerungen
+  - Kontakte
+  - Nachrichten
+  - Safari
 
 dockitems_persist:
   - name: "Firefox"
