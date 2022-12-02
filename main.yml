@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: remote
 
   vars_files:
     - default.config.yml
@@ -15,6 +15,9 @@
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
+    - role: gantsign.oh-my-zsh
+      when: configure_omz
+      tags: ['omz']
     - role: geerlingguy.dotfiles
       when: configure_dotfiles
       tags: ['dotfiles']
@@ -40,10 +43,6 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-
-    - import_tasks: tasks/sublime-text.yml
-      when: configure_sublime
-      tags: ['sublime-text']
 
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"

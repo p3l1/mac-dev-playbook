@@ -1,18 +1,32 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: false
+configure_dotfiles: true
 configure_terminal: false
 configure_osx: true
+# Configure oh-my-zsh
+configure_omz: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: true
+dockutil_install: false # dockutil casks is listed in homebrew_cask_apps
 dockitems_remove:
   - Launchpad
   - TV
   - Podcasts
   - 'App Store'
   - Terminal
+  - Numbers
+  - Keynote
+  - Music
+  - Pages
+  - Maps
+  - Photos
+  - FaceTime
+  - Notes
+  - Reminders
+  - Contatcs
+  - Messages
 
 dockitems_persist:
   - name: "Firefox"
@@ -33,15 +47,18 @@ dockitems_persist:
   - name: "Kalender"
     path: "/System/Applications/Calendar.app"
     pos: 6
+  - name: "Spotify"
+    path: "/Applications/Spotify.app"
+    pos: 7
   - name: "KeePassXC"
     path: "/Applications/KeePassXC.app"
-    pos: 7
+    pos: 8
   - name: "Nextcloud"
     path: "/Users/philipp/Nextcloud"
-    pos: 8
+    pos: 9
   - name: "Downloads"
     path: "/Users/philipp/Downloads"
-    pos: 9
+    pos: 10
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -50,41 +67,36 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: https://github.com/p3l1/dotfiles.git
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/github/dotfiles
 dotfiles_files:
   - .osx
+  - .zshrc
+  - .gitconfig
 
 homebrew_installed_packages:
-  - python@3.9
-  - cairo
-  - cowsay
   - git
-  - gobuster
+  - python@3.10
   - htop
   - httpie
   - ipcalc
   - iperf3
   - jq
-  - libgit2
-  - libpq
   - mas
-  - nghttp2
   - nmap
-  - node
-  - pandoc
   - pwgen
-  - r
-  - speedtest-cli
-  - telnet
-  - tldr
   - tree
-  - wakeonlan
   - watch
   - wget
-  - zabbix-cli
-  - zeromq
+  - hudochenkov/sshpass/sshpass
+  - ansible
+  - ansible-lint
+  - yamllint
+  - thefuck
+  - mitmproxy
+  - molecule
+  - romkatv/powerlevel10k/powerlevel10k
 
 homebrew_taps:
   - homebrew/core
@@ -92,24 +104,18 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - chromedriver
-  - google-chrome
   - docker
   - firefox
-  - slack
   - keepassxc
   - tabby
+  - spotify
+  - hpedrordrigues/tools/dockutil
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
-  - { id: 1037126344, name: "Apple Configurator 2" }
-  - { id: 562184107, name: "LanScan Pro" }
-  - { id: 784801555, name: "Microsoft OneNote" }
-  - { id: 1295203466, name: "Microsoft Remote Desktop" }
-  - { id: 409203825, name: "Numbers" }
-  - { id: 409201541, name: "Pages" }
-  - { id: 409907375, name: "Remote Desktop" }
-  - { id: 425424353, name: "The Unarchiver" }
+  - { id: 1444383602, name: "Good Notes" }
+  - { id: 409183694, name: "Keynote" }
+  - { id: 1518425043, name: "Boop" }
 
 mas_email: ""
 mas_password: ""
@@ -131,13 +137,36 @@ npm_packages: []
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
-pip_packages: []
-# - name: mkdocs
-#   state: present # present/absent/latest, default: present
-#   version: "0.16.3" # default: N/A
+pip_packages:
+- name: "molecule[docker]"
+  state: present
 
 # Set to 'true' to configure Sublime Text.
 configure_sublime: false
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
+
+# Configure oh-my-zsh
+# Default theme
+oh_my_zsh_theme: powerlevel10k/powerlevel10k
+
+# Default plugins
+oh_my_zsh_plugins:
+  - git
+  - zsh-autosuggestions
+  - docker
+  - ansible
+  - httpie
+  - nmap
+  - history
+  - brew
+
+# Wether to install by default for all specified users.
+# May be overridden by `oh_my_zsh: install:` under each user.
+oh_my_zsh_install: yes
+
+# User configuration
+# Important: oh-my-zsh is installed per user so you need to specify the users to install it for.
+users:
+  - username: philipp
