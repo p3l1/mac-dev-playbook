@@ -98,6 +98,7 @@ homebrew_installed_packages:
   - mitmproxy
   - molecule
   - romkatv/powerlevel10k/powerlevel10k
+  - defaultbrowser
 
 homebrew_taps:
   - homebrew/core
@@ -111,6 +112,7 @@ homebrew_cask_apps:
   - tabby
   - spotify
   - visual-studio-code
+  - nextcloud
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -148,6 +150,7 @@ configure_sublime: false
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
   - terminal-theme.yml
+  - default-browser.yml
 
 # Configure oh-my-zsh
 # Default theme

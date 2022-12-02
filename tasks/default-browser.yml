@@ -1,0 +1,4 @@
+---
+- name: Change default web browser to Firefox
+  command: defaultbrowser firefox
+  changed_when: false
