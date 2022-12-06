@@ -113,6 +113,7 @@ homebrew_cask_apps:
   - spotify
   - visual-studio-code
   - nextcloud
+  - discord
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
