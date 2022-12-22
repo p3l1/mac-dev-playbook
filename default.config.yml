@@ -61,12 +61,10 @@ dockitems_persist:
     path: "/Users/philipp/Downloads"
     pos: 10
 
-configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
+configure_sudoers: true
+sudoers_custom_config: |
+  # Allow openconnect to run as root without password prompt
+  philipp  ALL= NOPASSWD: /opt/homebrew/bin/openconnect
 
 dotfiles_repo: https://github.com/p3l1/dotfiles.git
 dotfiles_repo_accept_hostkey: true
@@ -75,6 +73,7 @@ dotfiles_files:
   - .osx
   - .zshrc
   - .gitconfig
+  - .openconnect
 
 homebrew_installed_packages:
   - git
@@ -99,6 +98,9 @@ homebrew_installed_packages:
   - molecule
   - romkatv/powerlevel10k/powerlevel10k
   - defaultbrowser
+  - openjdk
+  - base64
+  - openconnect
 
 homebrew_taps:
   - homebrew/core
@@ -119,6 +121,8 @@ homebrew_cask_apps:
   - anki
   - microsoft-remote-desktop
   - wireshark
+  - signal
+  - zoom
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -175,7 +179,7 @@ oh_my_zsh_plugins:
 
 # Wether to install by default for all specified users.
 # May be overridden by `oh_my_zsh: install:` under each user.
-oh_my_zsh_install: yes
+oh_my_zsh_install: true
 
 # User configuration
 # Important: oh-my-zsh is installed per user so you need to specify the users to install it for.
