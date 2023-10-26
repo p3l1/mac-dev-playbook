@@ -101,6 +101,22 @@ homebrew_installed_packages:
   - openjdk
   - base64
   - openconnect
+  - masscan
+  - docker-completion
+  - koekeishiya/formulae/yabai
+  - koekeishiya/formulae/skhd
+  - cmatrix
+  - gnupg
+  - yubikey-personalization
+  - hopenpgp-tools
+  - ykman
+  - pinentry-mac
+  - derailed/k9s/k9s
+  - k3d
+  - p7zip
+  - tor
+  - torsocks
+  - socat
 
 homebrew_taps:
   - homebrew/core
@@ -120,9 +136,18 @@ homebrew_cask_apps:
   - postman
   - anki
   - microsoft-remote-desktop
+  - microsoft-teams
+  - microsoft-word
+  - microsoft-excel
   - wireshark
   - signal
-  - zoom
+  - tunnelblick
+  - utm
+  - yubico-yubikey-manager
+  - onedrive
+  - vlc
+  - thunderbird
+  - raspberry-pi-imager
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
