@@ -1,3 +1,5 @@
 ---
 skip_list:
   - experimental
+  - fqcn[action-core]
+  - name[missing]
