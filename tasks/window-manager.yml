@@ -1,0 +1,41 @@
+---
+- name: Create configuration directory
+  file:
+    path: "~/.config/{{ item }}"
+    state: directory
+    mode: "0700"
+  with_items:
+    - yabai
+    - skhd
+
+- name: Ensure all configuration files are links
+  command: "ls -F ~/.config/{{ item }}/{{ item }}rc"
+  register: existing_dotfile_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items:
+    - yabai
+    - skhd
+
+- ansible.builtin.debug:
+    var: existing_dotfile_info
+
+- name: Remove existing configuration if present
+  file:
+    path: "~/.config/{{ item.item }}/{{ item.item }}rc"
+    state: absent
+    force: true
+  when: "'@' not in item.stdout"
+  with_items: "{{ existing_dotfile_info.results }}"
+
+- name: Link configuration in place
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}rc"
+    dest: "~/.config/{{ item }}/{{ item }}rc"
+    state: link
+    mode: 0644
+  become: false
+  with_items:
+    - yabai
+    - skhd
