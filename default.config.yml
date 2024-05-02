@@ -73,11 +73,12 @@ dotfiles_files:
   - .osx
   - .zshrc
   - .gitconfig
-  - .openconnect
+  - .yaml.pkl
+  - .json.pkl
 
 homebrew_installed_packages:
   - git
-  - python@3.10
+  - python@3.12
   - htop
   - httpie
   - ipcalc
@@ -117,6 +118,10 @@ homebrew_installed_packages:
   - tor
   - torsocks
   - socat
+  - pkl
+  - jless
+  - helm
+  - trufflehog
 
 homebrew_taps:
   - homebrew/core
